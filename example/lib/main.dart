@@ -43,20 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+    return Adaptive.scaffold(
+      string: "Test",
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Notre app tourne sous iOS: ${Adaptive.isiOS()}',
-            ),
-          ],
+        child: Text(
+          "${Adaptive.isiOS()}"
         ),
-      ),
+      )
     );
   }
 }
