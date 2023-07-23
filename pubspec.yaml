@@ -1,7 +1,8 @@
 name: adaptive_bibi
 description: A new Flutter project.
+author: Prod Stalker
 version: 0.0.1
-homepage:
+homepage: https://github.com/ProdStalker/adaptive_bibi
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
