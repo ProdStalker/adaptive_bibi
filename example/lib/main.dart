@@ -46,8 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Adaptive.scaffold(
       string: "Test",
       body: Center(
-        child: Text(
-          "${Adaptive.isiOS()}"
+        child: Adaptive.text(
+          string: "${Adaptive.isiOS()}"
         ),
       )
     );
