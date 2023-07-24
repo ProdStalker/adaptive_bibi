@@ -60,4 +60,64 @@ class Adaptive {
       child: body,
     );
   }
+
+  static Future alert({required BuildContext context, required VoidCallback onPressed}) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return isiOS() ? iOSAlert(context: context, onPressed: onPressed) : androidAlert(context: context, onPressed: onPressed);
+        }
+    );
+  }
+
+  static AlertDialog androidAlert({required BuildContext context, required VoidCallback onPressed}) {
+    return AlertDialog(
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          text(string: "Une erreur est apparue"),
+        ],
+      ),
+      actions: [
+        button(
+          child: text(string: "OK"),
+          onPressed: onPressed
+        )
+      ],
+    );
+  }
+
+  static CupertinoAlertDialog iOSAlert({required BuildContext context, required VoidCallback onPressed}) {
+    return CupertinoAlertDialog(
+      content: Column(
+        children: [
+          text(string: "Erreur")
+        ],
+      ),
+      actions: [
+        button(
+            child: text(string: "OK"),
+            onPressed: onPressed
+        )
+      ],
+    );
+  }
+
+  static button({required Widget child, required VoidCallback onPressed}) {
+    return isiOS() ? iOSButton(child: child, onPressed: onPressed) : androidButton(child: child, onPressed: onPressed);
+  }
+
+  static ElevatedButton androidButton({required Widget child, required VoidCallback onPressed}) {
+    return ElevatedButton(
+        onPressed: onPressed,
+        child: child
+    );
+  }
+
+  static CupertinoButton iOSButton({required Widget child, required VoidCallback onPressed}) {
+    return CupertinoButton(
+        onPressed: onPressed,
+        child: child
+    );
+  }
 }

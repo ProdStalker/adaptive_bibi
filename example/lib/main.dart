@@ -46,8 +46,21 @@ class _MyHomePageState extends State<MyHomePage> {
     return Adaptive.scaffold(
       string: "Test",
       body: Center(
-        child: Adaptive.text(
-          string: "${Adaptive.isiOS()}"
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Adaptive.text(
+                string: "${Adaptive.isiOS()}"
+            ),
+            Adaptive.button(
+                onPressed: () {
+                  Adaptive.alert(context: context, onPressed: () {
+                    Navigator.pop(context);
+                  });
+                },
+                child: Adaptive.text(string: "Press me")
+            )
+          ],
         ),
       )
     );
